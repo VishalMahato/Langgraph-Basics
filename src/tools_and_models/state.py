@@ -1,10 +1,9 @@
-from typing import Optional
-from langchain.messages import AnyMessage
+from langgraph.graph.message import add_messages
+from langchain_core.messages import BaseMessage
 from typing_extensions import TypedDict, Annotated
-import operator
-
+from typing import List, Optional
 
 class MessagesState(TypedDict):
-    messages: Annotated[list[AnyMessage], operator.add]
+    messages: Annotated[List[BaseMessage], add_messages]
     llm_calls: int
-    should_end:  Optional[bool] 
+    should_end: Optional[bool]
